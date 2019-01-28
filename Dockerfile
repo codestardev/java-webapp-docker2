@@ -8,7 +8,7 @@ COPY src /app/src
 COPY pom.xml /app
 RUN mvn -f /app/pom.xml clean package
 
-# deploy to tomcat
+# deploy to tomcat server
 FROM tomcat 
 COPY --from=build app/target/simplewebapp.war /usr/local/tomcat/webapps
 EXPOSE 8080
