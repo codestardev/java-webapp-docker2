@@ -42,6 +42,7 @@ pipeline{
                   sh '''#!/busybox/sh
                   /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
                   '''
+                  }
               }
           }
         }
