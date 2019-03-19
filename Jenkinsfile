@@ -38,10 +38,7 @@ pipeline{
         stage('Image Build And Publish'){
           steps{
               container("kaniko") {
-                  withEnv(['PATH+EXTRA=/busybox:/kaniko']) {
-                  sh '''#!/busybox/sh
-                  /kaniko -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
-                  '''
+                  sh "kaniko -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
                   }
               }
           }
