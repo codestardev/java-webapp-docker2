@@ -38,7 +38,7 @@ pipeline{
         stage('Image Build And Publish'){
           steps{
               container("kaniko") {
-                  sh "kaniko -f `pwd`/Dockerfile -c `pwd` --insecure --destination=${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
+                  sh "kaniko -f `pwd`/Dockerfile -c `pwd` -v config.json:/root/.docker/config.json --destination=${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}"
               }
           }
         }
